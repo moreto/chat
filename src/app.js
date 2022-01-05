@@ -15,5 +15,20 @@ app.get( '/', ( req, res ) => {
 
 
 io.of( '/stream' ).on( 'connection', stream );
+const port = normalizePort(process.env.PORT || "3000");
+app.set("port", port);
 
-server.listen( 3000 );
+function normalizePort(val) {
+    const port = parseInt(val, 10);
+    if (isNaN(port)) {
+      return val;
+    }
+  
+    if (port >= 0) {
+      return port;
+    }
+  
+    return false;
+  }
+  
+// server.listen( 3000 );
